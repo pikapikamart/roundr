@@ -15,11 +15,14 @@ module.exports = ()=>{
         })
 
         socket.on("message", async (result)=>{
-            const timeData = await axios.get("http://worldtimeapi.org/api/timezone/Asia/Manila");
-            const time = Intl.DateTimeFormat('en', { hour: "numeric", minute: "numeric", hour12: true }).format(new Date(timeData.data.datetime).toLocaleDateString());
             const {message, channel, email} = result;
-            let newMessage;
-
+            const timeData = await axios.get("http://worldtimeapi.org/api/timezone/Asia/Manila");
+            const data = new Date(timeData.data.datetime).toLocaleString("en-US", {timeZone: "Asia/Manila"});
+            const time = Intl.DateTimeFormat("en", {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true
+              }).format(new Date(data));
 
             await User.findOne({email:email}, (err, result)=>{
                 if (err) {
