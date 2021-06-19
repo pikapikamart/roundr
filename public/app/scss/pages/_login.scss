@@ -1,0 +1,89 @@
+@use "../abstract/functions" as func;
+@use "../abstract//mixins" as mix;
+@use "../abstract/variables" as var;
+@use "../abstract/extensions";
+@use "../base/helpers";
+
+.signup-success {
+    background-color: #FFFFFF;
+    border-radius: 0 0 .5rem .5rem;
+    color: var.$l-purple;
+    display: grid;
+    font-size: 1.125rem;
+    height: 3.125rem;
+    left: 50%;
+    position: absolute;
+    place-content: center;
+    top: 0;
+    transition: transform .3s ease;
+    transform: translate(-50%, -100%);
+    text-align: center;
+    width: clamp(21rem, 20vw, 32rem);
+
+    &.show {
+        transform: translate(-50%, 0%);
+    }
+}
+
+#errorLoginAlert {
+    background-color: #ffe2e6;
+    border-radius: .5rem;
+    border: 1px solid rgb(252, 56, 56);
+    left: 3rem;
+    padding: 1.25rem 1rem;
+    position: absolute;
+    text-align: center;
+    top: 3.25rem;
+    width: calc(100% - 6rem);
+}
+
+.login {
+    background: linear-gradient(0deg, var.$l-blue, var.$l-purple);
+    min-height: 100vh;
+    padding: 6rem 3rem;
+
+    &__logo {
+        margin: auto;
+    }
+
+    > form {
+        transform: translateY(-2.5rem);
+    }
+}
+
+.roundr-brand,
+.roundr-signup {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.roundr-brand {
+    color: var.$l-purple;
+}
+
+.roundr-signup {
+    color: var.$l-blue;
+}
+
+a.js-signup-trigger {
+    color: var.$blue-1;
+    padding-left: .25rem;
+    @extend %link-transition;
+
+    &::before {
+        background-color: var.$blue-1;
+        width: 100%;
+    }
+}
+
+.signup {
+    padding: 6rem 3rem;
+
+    &.selected {
+        opacity: 1;
+        visibility: visible;
+    }
+}

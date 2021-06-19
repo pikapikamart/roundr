@@ -1,0 +1,101 @@
+extends head 
+
+block content
+    main.homepage
+        header.homepage__navbar 
+            button.btn.btn__info.btn--rounded(aria-label="click to get help about roundr application")
+            .form__container.form__container--loggedin 
+                input.form__input(type="text" name="searchTopic" id="searchTopic" placeholder="search a topic")
+            button.btn.btn__person.btn--rounded.js-account-trigger(aria-label="click to open up your account profile information")
+            .modal.account
+                - var user = userData
+                h2.visually-hidden account information
+                .modal__cover.js-account-trigger
+                .account__container 
+                    .account__close_holder 
+                        button.btn__close.js-account-first.js-account-trigger
+                    .account__wrapper.account__info     
+                        img(src="/app/images/default-person.svg", alt="person info image")
+                        h3= user.fullName
+                        p(data-address)= user.email
+                    .account__wrapper 
+                        h3 Bio
+                        p= user.bio
+                    .account__wrapper 
+                        h3 Display Name
+                        p= user.displayName
+                    .account__wrapper 
+                        a.account__history.js-account-last(href="/users/history" aria-label="go to user's chat message history") History
+                        button.visually-hidden
+                    
+        section.channel
+            .channel__wrapper
+                button.btn.btn--rounded.channel__select.js-channel-trigger(title="click to select roundr channels")
+                h2.channel__title ##{channel}
+                p.channel__text general server for roundr 
+            //- Need to create a channel region
+            .channel__container
+                ul.channel__lists  
+                    li.channel__link 
+                        a.js-channel-first(aria-label="go to general channel" href="/home/general") #general
+                    li.channel__link 
+                        a(aria-label="go to help channel" href="/home/help") #help
+                    li.channel__link 
+                        a(aria-label="go to random channel" href="/home/random") #random
+                    li.channel__link 
+                        a(aria-label="go to resources channel" href="/home/resources") #resources
+                    li.channel__link 
+                        a(aria-label="go to jobs channel" href="/home/jobs") #jobs
+                    li.channel__link 
+                        button.btn__close--white.js-channel-trigger.js-channel-last(aria-label="close channel selection modal")
+                        button.visually-hidden
+
+        //- This if for the content messages section
+        //- Need to make iteration for every load of website
+        section.content 
+            - var data = messageData
+            ul.js-content-holder
+                each val in data
+                    li 
+                        .content__container 
+                            .avatar 
+                                img.avatar__image(src="/app/images/person-image.svg")
+                            .content__wrapper 
+                                p.content__user
+                                    span.content__displayName= val.displayName
+                                    span.content__time= val.time
+                                .content__selection 
+                                    button(aria-label="click to open up target user options")
+                                p.content__message= val.message
+                                .comments 
+                                    .comments__toggles 
+                                        button.js-message-reply(aria-label="click to add a reply") 
+                                        button.js-message-like(aria-label="click to like the message" data-like="id") 
+
+        //- This is for the message section
+        section.message 
+            h2.visually-hidden message section for roundr 
+            form.message__form.js-message-control(action="/message/general" method="POST" data-channel=channel)
+                .message__wrapper
+                    textarea.message__compose(name="message" id="message" placeholder="Message" title="enter you message in here")
+                .message__wrapper
+                    .message__options 
+                        button.message__send(aria-label="send message")
+
+        //- This is the roundr home control
+        .control.js-control-option
+            .modal.js-control-open
+                .modal__cover   
+            .control__container
+                ul.control__options   
+                    li.control__option
+                        form(action="/users/logout" method="GET") 
+                            button.btn.btn--rounded(title="logout your roundr account")
+                    li.control__option
+                        button.btn.btn--rounded(title="configure your roundr account")
+                    li.control__option
+                        button.btn.btn--rounded(title="search another user")
+                button.btn.btn--rounded.btn__roundr-control.js-control-open(title="open roundr control selection")
+            button.visually-hidden 
+    script(src="/socket.io/socket.io.js")
+    script(src="/app/js/script.js" type="module") 

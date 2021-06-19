@@ -1,0 +1,112 @@
+@use "abstract/variables" as var;
+@use "abstract/functions" as func;
+@use "abstract/extensions";
+
+form {
+    border-radius: .5rem;
+    padding: 1.5rem;
+}
+
+.form {
+    $root: &;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 100%;
+
+    &__container {
+        background: linear-gradient(to right, var.$l-blue, var.$l-purple);
+        border-radius: 2rem;
+        margin-bottom: 2rem;
+        padding: 1px;
+        position: relative;
+
+        &.invalid {
+            background: red;
+
+            #{$root}__error {
+                visibility: visible;
+            }
+        }
+
+        &:focus-within {
+            box-shadow: 0 0 1px 2px #FFFFFF,
+                        0 0 1px 4px var.$l-purple;
+            background: white;
+        }
+
+        &--loggedin {
+            border-radius: 4px;
+            margin-bottom: 0;
+            padding: 2px;
+
+            &:focus-within {
+                box-shadow: 0 0 1px 2px #FFFFFF;
+                background: none;
+            }
+
+            #{$root}__input {
+                background: #FFFFFF url("../app/images/icon-search.svg") no-repeat 95% center;
+                border-radius: 4px;
+                height: 2rem;
+                padding: 0 2rem 0 1rem;
+            }
+        }
+    }
+
+    &__input {
+        border-radius: 2rem;
+        color: var.$black-1;
+        font-size: 0.875rem;
+        height: 3rem;
+        padding: 1rem;
+        position: relative;
+        top: 0;
+        width: 100%;
+        
+        &:focus,
+        &.moveup {
+
+            + label {
+                transform: translateY(-220%) scale(.9);
+            }
+        }
+    }
+
+    &__label {
+        background-color: #FFFFFF;
+        border-radius: 1rem;
+        color: var.$black-2;
+        left: 1rem;
+        line-height: 1;
+        padding: 0 .25rem;
+        position: absolute;
+        transition: transform 0.25s ease;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__error {
+        bottom: 0;
+        color: red;
+        font-size: .875rem;
+        padding-left: 1rem;
+        position: absolute;
+        transform: translateY(100%);
+        visibility: hidden;
+    }
+
+    &__description {
+        color: var.$black-2;
+        font-size: .875rem;
+        position: absolute;
+        right: 0;
+        top: -40%;
+    }
+
+    &__signinText {
+        font-size: .875rem;
+        margin: 2.5rem 0;
+        position: relative;
+        text-align: center;
+    }
+}

@@ -1,0 +1,19 @@
+@use "../abstract/variables" as var;
+@use "../abstract/functions" as func;
+
+.homepage {
+    display: grid;
+    grid-template-rows: func.convert(56) func.convert(75) calc(100% - 16.0625rem) func.convert(94) 2rem;
+    height: 100vh;
+    position: relative;
+
+    &__navbar {
+        align-items: center;
+        background: linear-gradient(to right, var.$l-blue, var.$l-purple);
+        border-radius: 0 0 12px 12px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+}

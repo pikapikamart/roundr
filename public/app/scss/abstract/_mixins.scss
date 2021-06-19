@@ -1,0 +1,8 @@
+@mixin flex($justify: flex-start, $align: stretch, $direction: row, ) {
+    align-items: $align;
+    display: flex;
+    @if ($direction != row) {
+        flex-direction: column;
+    }
+    justify-content: $justify;
+}

@@ -1,0 +1,55 @@
+extends head 
+
+block  content 
+    main.login 
+        .signup-success(aria-hidden="true") account successfully created
+        if error
+            #errorLoginAlert(aria-role="alert")= error
+        h1.visually-hidden roundr login page
+        img.login__logo(src="app/images/roundr.svg", alt="roundr logo")
+        form.form.js-login-form(action="/users/login", method="POST") 
+            h2.roundr-brand roundr
+            p.visually-hidden.js-login-region(aria-live="polite")
+            .form__container 
+                input.form__input(type="text" id="loginEmail" name="email" title="enter your account email"  autocomplete="off")
+                label.form__label(for="loginEmail") email
+                p.form__error please enter an email
+            .form__container 
+                input.form__input(type="password" id="loginPassword" name="password" title="enter your account password"  autocomplete="off")
+                label.form__label(for="loginPassword") password
+                p.form__error please enter a password
+            .form_container 
+                button.btn.btn__default(type="submit") Login
+            p.form__signinText don't have an account? 
+                a.js-signup-trigger(href="register") register now
+
+        .signup.modal
+            .modal__cover.js-close-control
+            form.form.js-signup-form(action="/users/signup" method="POST")
+                button.btn__close.js-close-control(aria-label="close signup form" type="button")
+                h2.roundr-signup sign up 
+                p.visually-hidden.js-signup-region(aria-live="polite")
+                .form__container 
+                    input.form__input(type="text" id="signupFullName" name="fullname" title="enter fullname to signup" autocomplete="off" aria-required="true")
+                    label.form__label(for="signupFullName") full name*
+                    p.form__error please enter your full name
+                .form__container 
+                    input.form__input(type="text" id="signupDisplayName" name="displayname" title="enter display name to signup" autocomplete="off" aria-required="true")
+                    label.form__label(for="signupDisplayName") display name*
+                    p.form__error please enter a display name
+                .form__container 
+                    input.form__input(type="text" id="signupEmail" name="email" title="enter email to signup" autocomplete="off" aria-required="true")
+                    label.form__label(for="signupEmail") email*
+                    p.form__error please enter a valid email
+                .form__container 
+                    input.form__input(type="password" id="signupPassword" name="password" title="signup password must be of length 6" autocomplete="off" aria-required="true")
+                    label.form__label(for="loginEmail") password*
+                    p.form__error please enter a valid password
+                    p.form__description#signupPassDesc *must be of 6 length
+                .form_container 
+                    button.btn.btn__default.js-last-control(type="submit") Register
+                    button.visually-hidden.js-hidden-close-modal(aria-hidden="true")
+        .bounce-loading 
+            span 
+            
+    script(src="/app/js/signup.js" type="module") 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="icon-history" transform="translate(12 12)">
+    <g id="icon-history-2" data-name="icon-history" transform="translate(-12 -12)">
+      <path id="Path_37" data-name="Path 37" d="M0,0H24V24H0Z" fill="none"/>
+      <path id="Path_38" data-name="Path 38" d="M13,3a9,9,0,0,0-9,9H1l3.89,3.89.07.14L9,12H6a7.034,7.034,0,1,1,2.06,4.94L6.64,18.36A9,9,0,1,0,13,3ZM12,8v5l4.28,2.54L17,14.33l-3.5-2.08V8Z" fill="#8570de"/>
+    </g>
+  </g>
+</svg>

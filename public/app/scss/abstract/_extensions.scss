@@ -1,0 +1,58 @@
+@use "variables" as var;
+
+%link-transition {
+    position: relative;
+
+    &::before {
+        content: "";
+        bottom: 0;
+        height: 2px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        transition: opacity .25s ease,
+                    bottom .25s ease;
+    }
+
+    &:focus-visible,
+    &:focus-within,
+    &:hover {
+        
+        &::before {
+            bottom: -.15rem;
+            opacity: 1;
+        }
+    }
+}
+
+%grid-placement {
+    align-items: center;
+    align-content: center;
+    display: grid;
+    justify-content: flex-start;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+
+    %grid-one {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+
+    %grid-two {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    %grid-three {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+}
+
+%blue-visible {
+
+    &:focus-visible {
+        box-shadow: 0 0 1px 2px #FFFFFF,
+                    0 0 1px 4px var.$l-blue;
+    }
+}

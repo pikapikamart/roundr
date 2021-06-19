@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.146" y1="0.223" x2="0.81" y2="0.807" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#a44ff9"/>
+      <stop offset="1" stop-color="#f374af"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_52" data-name="Group 52" transform="translate(-128 -612)">
+    <g id="Group_49" data-name="Group 49" transform="translate(-57 -32)">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="16" cy="16" r="16" transform="translate(185 644)" fill="url(#linear-gradient)"/>
+      <circle id="Ellipse_5" data-name="Ellipse 5" cx="15" cy="15" r="15" transform="translate(186 645)" fill="#fff"/>
+      <circle id="Ellipse_6" data-name="Ellipse 6" cx="14" cy="14" r="14" transform="translate(187 646)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="icon-logout-account" transform="translate(146 630)">
+      <g id="icon-logout-account-2" data-name="icon-logout-account" transform="translate(-12 -12)">
+        <path id="Path_31" data-name="Path 31" d="M0,0H20V20H0Z" fill="none"/>
+        <path id="Path_32" data-name="Path 32" d="M14.5,6.333,13.325,7.508l2.15,2.158H7v1.667h8.475l-2.15,2.15L14.5,14.667,18.667,10.5ZM3.667,4.667h6.667V3H3.667A1.672,1.672,0,0,0,2,4.667V16.333A1.672,1.672,0,0,0,3.667,18h6.667V16.333H3.667Z" transform="translate(-0.333 -0.5)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

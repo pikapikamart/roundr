@@ -1,0 +1,105 @@
+@use "abstract/mixins" as mix;
+@use "abstract/variables" as var;
+@use "abstract/functions" as func;
+@use "abstract/extensions";
+
+
+.btn {
+    border-radius: 2rem;
+    display: block;
+    @include mix.flex(center, center);
+    font-weight: 600;
+    
+    &__default {
+        @extend %blue-visible;
+        background-color: var.$l-blue;
+        border: .2rem solid var.$l-blue;
+        color: #FFFFFF;
+        height: 3rem;
+        margin: 0 auto;
+        position: relative;
+        transition: color .3s ease,
+                    background-color .3s ease;
+        width: 11.25rem;
+
+        &:hover {
+            background-color: white;
+            color: var.$l-blue;
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+
+    &__close {
+        $close: &;
+        background: url("../app/images/close.svg") no-repeat center center;
+        height: 1rem;
+        position: absolute;
+        transition: transform .3s ease;
+        width: 1rem;
+
+        &:focus{
+            box-shadow: 0 0 1px 2px #FFFFFF,
+                        0 0 1px 4px var.$l-purple;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &--white {
+            @extend #{$close};
+            background: url("../app/images/close--white.svg") no-repeat center center;
+            
+            &:focus-visible{
+                box-shadow: 0 0 1px 2px var.$l-blue,
+                            0 0 1px 4px #FFFFFF;
+            }   
+        }
+    }
+
+    &__info {
+        background: url("../app/images/icon-information.svg") no-repeat center center;
+        margin-right: func.convert(18);
+
+        &:focus-visible {
+            box-shadow: 0 0 1px 3px var.$l-blue,
+                        0 0 1px 5px #FFFFFF;
+        }
+    }
+
+    &__person {
+        background: url("../app/images/icon-person.svg") no-repeat center center;
+        margin-left: func.convert(18);
+
+        &:focus-visible {
+            box-shadow: 0 0 1px 3px var.$l-purple,
+                        0 0 1px 5px #FFFFFF;
+        }
+    }  
+
+    &--rounded {
+        background-size: cover;
+        border-radius: 50%;
+        height: func.convert(24);
+        transition: transform .3s ease;
+        width: func.convert(24);   
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__roundr-control {
+        background-image: url("../app/images/icon-roundr-control.svg");
+        position: relative;
+        z-index: 4;
+        
+        &:focus-visible {
+            box-shadow: 0 0 1px 2px #FFFFFF,
+                        0 0 1px 5px var.$l-purple;
+        }
+    }
+}
