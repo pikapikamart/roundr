@@ -16,7 +16,19 @@ module.exports = ()=>{
 
         socket.on("message", async (result)=>{
             const timeData = await axios.get("http://worldtimeapi.org/api/timezone/Asia/Manila");
-            const time = Intl.DateTimeFormat("en-PH",{ hour: "numeric", minute: "numeric", hour12: true }).format(new Date(timeData.data.datetime))
+            // Format the time
+            const time = Intl.DateTimeFormat("en", {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true
+              }).format(
+                new Date(
+                  new Date(timeData.data.datetime).toLocaleString("en-US", {
+                    timeZone: "Asia/Manila"
+                  })
+                )
+              );
+              
             const {message, channel, email} = result;
             let newMessage;
 
